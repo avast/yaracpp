@@ -26,7 +26,13 @@ if(NOT TARGET yara)
 		set(YARA_WIN_DIR       ${YARA_DIR}/windows/vs2015)
 		set(YARA_SOLUTION      ${YARA_WIN_DIR}/yara.sln)
 		set(YARA_LIBRARY_DIR   ${YARA_WIN_DIR}/libyara/$<CONFIGURATION>)
-		set(YARA_BUILD_COMMAND msbuild /m:${CPUS} /p:Platform=${PLATFORM} /p:Configuration=$<CONFIGURATION> ${YARA_SOLUTION})
+		set(YARA_BUILD_COMMAND "${CMAKE_VS_MSBUILD_COMMAND}"
+			/m:${CPUS}
+			/p:Platform=${PLATFORM}
+			/p:Configuration=$<CONFIGURATION>
+			/p:PlatformToolset=${CMAKE_VS_PLATFORM_TOOLSET}
+			/p:WindowsTargetPlatformVersion=${CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION}
+			${YARA_SOLUTION})
 	else()
 		set(YARA_LIBRARY_DIR   ${YARA_DIR}/libyara/.libs)
 		set(YARA_BUILD_COMMAND make -j${CPUS})
