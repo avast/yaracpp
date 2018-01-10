@@ -1,6 +1,6 @@
 # YARA C++ Wrapper
 
-[![Build Status](https://travis-ci.org/avast-tl/yaracpp.svg?branch=master)](https://travis-ci.org/avast-tl/yaracpp)
+[![Travis CI build status](https://travis-ci.org/avast-tl/yaracpp.svg?branch=master)](https://travis-ci.org/avast-tl/yaracpp)
 
 C++ wrapper for [YARA](https://github.com/VirusTotal/yara).
 
