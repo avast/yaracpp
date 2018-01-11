@@ -16,6 +16,9 @@ configuration:
   - Debug
   - Release
 
+matrix:
+  fast_finish: true
+
 install:
   - appveyor DownloadFile "https://downloads.sourceforge.net/project/winflexbison/%WINFLEXBISON_ARCHIVE%"
   - 7z x -y -owinflexbison\ "%WINFLEXBISON_ARCHIVE%" > nul
