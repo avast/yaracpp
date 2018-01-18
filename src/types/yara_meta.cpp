@@ -12,22 +12,6 @@ namespace yaracpp
 {
 
 /**
- * Constructor
- */
-YaraMeta::YaraMeta()
-{
-
-}
-
-/**
- * Destructor
- */
-YaraMeta::~YaraMeta()
-{
-
-}
-
-/**
  * Get name of meta
  * @return Name of meta
  */

@@ -24,9 +24,6 @@ class YaraRule
 		std::vector<YaraMeta> metas;    ///< all meta-data related to rule
 		std::vector<YaraMatch> matches; ///< all matches of rule
 	public:
-		YaraRule();
-		~YaraRule();
-
 		/// @name Const getters
 		/// @{
 		std::string getName() const;

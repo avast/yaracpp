@@ -10,22 +10,6 @@ namespace yaracpp
 {
 
 /**
- * Constructor
- */
-YaraMatch::YaraMatch()
-{
-
-}
-
-/**
- * Destructor
- */
-YaraMatch::~YaraMatch()
-{
-
-}
-
-/**
  * Get offset of detection
  * @return Offset of detection
  */

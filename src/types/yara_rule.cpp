@@ -10,22 +10,6 @@ namespace yaracpp
 {
 
 /**
- * Constructor
- */
-YaraRule::YaraRule()
-{
-
-}
-
-/**
- * Destructor
- */
-YaraRule::~YaraRule()
-{
-
-}
-
-/**
  * Get name related to this rule
  * @return Name of rule
  */

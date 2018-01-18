@@ -28,9 +28,6 @@ class YaraMeta
 		std::string strValue;   ///< string value of meta
 		std::uint64_t intValue; ///< int value of meta
 	public:
-		YaraMeta();
-		~YaraMeta();
-
 		/// @name Const getters
 		/// @{
 		const std::string& getId() const;
