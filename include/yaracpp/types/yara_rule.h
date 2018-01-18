@@ -27,7 +27,7 @@ class YaraRule
 		/// @name Const getters
 		/// @{
 		std::string getName() const;
-		const YaraMeta* getMeta(std::string id) const;
+		const YaraMeta* getMeta(const std::string &id) const;
 		const YaraMatch* getMatch(std::size_t index) const;
 		const YaraMatch* getFirstMatch() const;
 		const std::vector<YaraMeta>& getMetas() const;
@@ -38,14 +38,14 @@ class YaraRule
 
 		/// @name Getters
 		/// @{
-		YaraMeta* getMeta(std::string id);
+		YaraMeta* getMeta(const std::string &id);
 		YaraMatch* getMatch(std::size_t index);
 		YaraMatch* getFirstMatch();
 		/// @}
 
 		/// @name Setters
 		/// @{
-		void setName(std::string ruleName);
+		void setName(const std::string &ruleName);
 		/// @}
 
 		/// @name Other methods

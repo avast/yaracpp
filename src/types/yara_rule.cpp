@@ -23,7 +23,7 @@ std::string YaraRule::getName() const
  * @param id Name of selected meta
  * @return Pointer to selected meta or @c nullptr if such meta is not found
  */
-const YaraMeta* YaraRule::getMeta(std::string id) const
+const YaraMeta* YaraRule::getMeta(const std::string &id) const
 {
 	for(const auto &meta : metas)
 	{
@@ -41,9 +41,9 @@ const YaraMeta* YaraRule::getMeta(std::string id) const
  * @param index Index of selected match (indexed from 0)
  * @return Pointer to selected match or @c nullptr if such match is not found
  */
-const YaraMatch* YaraRule::getMatch(std::size_t index) const
+const YaraMatch* YaraRule::getMatch(std::size_t index = {}) const
 {
-	return index < matches.size() ? &matches[index] : nullptr;
+	return ((index < matches.size()) ? &matches[index] : nullptr);
 }
 
 /**
@@ -52,7 +52,7 @@ const YaraMatch* YaraRule::getMatch(std::size_t index) const
  */
 const YaraMatch* YaraRule::getFirstMatch() const
 {
-	return getMatch(0);
+	return getMatch();
 }
 
 /**
@@ -96,17 +96,9 @@ std::size_t YaraRule::getNumberOfMatches() const
  * @param id Name of selected meta
  * @return Pointer to selected meta or @c nullptr if such meta is not found
  */
-YaraMeta* YaraRule::getMeta(std::string id)
+YaraMeta* YaraRule::getMeta(const std::string &id)
 {
-	for(auto &meta : metas)
-	{
-		if(meta.getId() == id)
-		{
-			return &meta;
-		}
-	}
-
-	return nullptr;
+	return const_cast<YaraMeta*>(static_cast<const YaraRule*>(this)->getMeta(id));
 }
 
 /**
@@ -116,7 +108,7 @@ YaraMeta* YaraRule::getMeta(std::string id)
  */
 YaraMatch* YaraRule::getMatch(std::size_t index)
 {
-	return index < matches.size() ? &matches[index] : nullptr;
+	return ((index < matches.size()) ? &matches[index] : nullptr);
 }
 
 /**
@@ -125,14 +117,14 @@ YaraMatch* YaraRule::getMatch(std::size_t index)
  */
 YaraMatch* YaraRule::getFirstMatch()
 {
-	return getMatch(0);
+	return const_cast<YaraMatch*>(static_cast<const YaraRule*>(this)->getFirstMatch());
 }
 
 /**
  * Set name of rule
  * @param ruleName Name of rule
  */
-void YaraRule::setName(std::string ruleName)
+void YaraRule::setName(const std::string &ruleName)
 {
 	name = ruleName;
 }
