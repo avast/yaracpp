@@ -26,7 +26,7 @@ class YaraRule
 	public:
 		/// @name Const getters
 		/// @{
-		std::string getName() const;
+		const std::string &getName() const;
 		const YaraMeta* getMeta(const std::string &id) const;
 		const YaraMatch* getMatch(std::size_t index) const;
 		const YaraMatch* getFirstMatch() const;
@@ -53,6 +53,11 @@ class YaraRule
 		void addMeta(const YaraMeta &meta);
 		void addMatch(const YaraMatch &match);
 		/// @}
+
+        // @name Utility operator overloads
+        // @{
+        friend std::ostream& operator<<(std::ostream& o, const YaraRule& rule);
+        // @}
 };
 
 } // namespace yaracpp
