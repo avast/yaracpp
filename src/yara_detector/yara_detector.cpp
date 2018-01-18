@@ -63,7 +63,7 @@ bool scan(YR_RULES* rules, YR_CALLBACK_FUNC callback, YaraDetector::CallbackSett
 YaraDetector::YaraDetector() : compiler(nullptr), files(), detectedRules(), undetectedRules(), textFilesRules(nullptr),
 	precompiledRules(), stateIsValid(true), needsRecompilation(true)
 {
-	stateIsValid = (yr_initialize() == ERROR_SUCCESS && yr_compiler_create(&compiler) == ERROR_SUCCESS);
+	stateIsValid = ((yr_initialize() == ERROR_SUCCESS) && (yr_compiler_create(&compiler) == ERROR_SUCCESS));
 }
 
 /**
@@ -245,11 +245,8 @@ int YaraDetector::yaraCallback(int message, void *messageData, void *userData)
  */
 bool YaraDetector::addRules(const char *string)
 {
-	auto result = yr_compiler_add_string(compiler, string, nullptr);
-	if (result == 0)
-		needsRecompilation = true;
-
-	return result == 0;
+	const auto result = yr_compiler_add_string(compiler, string, nullptr);
+	return (needsRecompilation = !(result));
 }
 
 /**
@@ -345,7 +342,7 @@ bool YaraDetector::analyzeWithScan(T&& value, bool storeAllRules)
 	auto settings = CallbackSettings(storeAllRules, detectedRules, undetectedRules);
 
 	auto rules = getCompiledRules();
-	if (rules == nullptr)
+	if (!(rules))
 		return false;
 
 	if (!scan(rules, yaraCallback, settings, std::forward<T>(value)))

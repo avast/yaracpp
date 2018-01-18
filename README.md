@@ -24,7 +24,7 @@ int main() {
 
     if (yara.analyze("/path/to/scanned/file")) {
         for (const auto& rule : yara.getDetectedRules()) {
-            std::cout << rule.getName() << std::endl;
+            std::cout << rule << '\n';
         }
     }
 }

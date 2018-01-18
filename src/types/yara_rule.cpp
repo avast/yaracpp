@@ -13,7 +13,7 @@ namespace yaracpp
  * Get name related to this rule
  * @return Name of rule
  */
-std::string YaraRule::getName() const
+const std::string &YaraRule::getName() const
 {
 	return name;
 }
@@ -145,6 +145,18 @@ void YaraRule::addMeta(const YaraMeta &meta)
 void YaraRule::addMatch(const YaraMatch &match)
 {
 	matches.push_back(match);
+}
+
+/**
+ * Overload to print rule's name
+ * @param o output stream
+ * @param rule rule being printed
+ * @return output stream for chaining operators
+ */
+std::ostream& operator<<(std::ostream& o, const YaraRule& rule)
+{
+	o << rule.name;
+  	return o;
 }
 
 } // namespace yaracpp
