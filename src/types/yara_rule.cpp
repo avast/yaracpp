@@ -6,6 +6,8 @@
 
 #include "yaracpp/types/yara_rule.h"
 
+#include <ostream>
+
 namespace yaracpp
 {
 
@@ -41,7 +43,7 @@ const YaraMeta* YaraRule::getMeta(const std::string &id) const
  * @param index Index of selected match (indexed from 0)
  * @return Pointer to selected match or @c nullptr if such match is not found
  */
-const YaraMatch* YaraRule::getMatch(std::size_t index = {}) const
+const YaraMatch* YaraRule::getMatch(std::size_t index) const
 {
 	return ((index < matches.size()) ? &matches[index] : nullptr);
 }
@@ -52,7 +54,7 @@ const YaraMatch* YaraRule::getMatch(std::size_t index = {}) const
  */
 const YaraMatch* YaraRule::getFirstMatch() const
 {
-	return getMatch();
+	return getMatch(0);
 }
 
 /**
@@ -156,7 +158,7 @@ void YaraRule::addMatch(const YaraMatch &match)
 std::ostream& operator<<(std::ostream& o, const YaraRule& rule)
 {
 	o << rule.name;
-  	return o;
+	return o;
 }
 
 } // namespace yaracpp

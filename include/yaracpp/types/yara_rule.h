@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <iosfwd>
 #include <vector>
 
 #include "yaracpp/types/yara_match.h"
@@ -54,10 +55,10 @@ class YaraRule
 		void addMatch(const YaraMatch &match);
 		/// @}
 
-        // @name Utility operator overloads
-        // @{
-        friend std::ostream& operator<<(std::ostream& o, const YaraRule& rule);
-        // @}
+		// @name Utility operator overloads
+		// @{
+		friend std::ostream& operator<<(std::ostream& o, const YaraRule& rule);
+		// @}
 };
 
 } // namespace yaracpp

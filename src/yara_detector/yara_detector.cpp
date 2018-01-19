@@ -246,7 +246,9 @@ int YaraDetector::yaraCallback(int message, void *messageData, void *userData)
 bool YaraDetector::addRules(const char *string)
 {
 	const auto result = yr_compiler_add_string(compiler, string, nullptr);
-	return (needsRecompilation = !(result));
+	
+	needsRecompilation = (result == 0);
+	return needsRecompilation;
 }
 
 /**
