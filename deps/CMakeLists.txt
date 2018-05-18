@@ -59,6 +59,7 @@ if(NOT TARGET yara)
 				--prefix=${YARA_INSTALL_DIR}
 				--disable-shared
 				--without-crypto
+				CC=${CMAKE_C_COMPILER}
 		)
 	endif()
 
