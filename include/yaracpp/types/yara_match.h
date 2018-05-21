@@ -21,9 +21,6 @@ class YaraMatch
 		std::size_t offset;             ///< offset of match detection
 		std::vector<std::uint8_t> data; ///< data
 	public:
-		YaraMatch();
-		~YaraMatch();
-
 		/// @name Getters
 		/// @{
 		std::size_t getOffset() const;

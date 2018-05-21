@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <iosfwd>
 #include <vector>
 
 #include "yaracpp/types/yara_match.h"
@@ -24,13 +25,10 @@ class YaraRule
 		std::vector<YaraMeta> metas;    ///< all meta-data related to rule
 		std::vector<YaraMatch> matches; ///< all matches of rule
 	public:
-		YaraRule();
-		~YaraRule();
-
 		/// @name Const getters
 		/// @{
-		std::string getName() const;
-		const YaraMeta* getMeta(std::string id) const;
+		const std::string &getName() const;
+		const YaraMeta* getMeta(const std::string &id) const;
 		const YaraMatch* getMatch(std::size_t index) const;
 		const YaraMatch* getFirstMatch() const;
 		const std::vector<YaraMeta>& getMetas() const;
@@ -41,14 +39,14 @@ class YaraRule
 
 		/// @name Getters
 		/// @{
-		YaraMeta* getMeta(std::string id);
+		YaraMeta* getMeta(const std::string &id);
 		YaraMatch* getMatch(std::size_t index);
 		YaraMatch* getFirstMatch();
 		/// @}
 
 		/// @name Setters
 		/// @{
-		void setName(std::string ruleName);
+		void setName(const std::string &ruleName);
 		/// @}
 
 		/// @name Other methods
@@ -56,6 +54,11 @@ class YaraRule
 		void addMeta(const YaraMeta &meta);
 		void addMatch(const YaraMatch &match);
 		/// @}
+
+		// @name Utility operator overloads
+		// @{
+		friend std::ostream& operator<<(std::ostream& o, const YaraRule& rule);
+		// @}
 };
 
 } // namespace yaracpp

@@ -6,30 +6,16 @@
 
 #include "yaracpp/types/yara_rule.h"
 
+#include <ostream>
+
 namespace yaracpp
 {
-
-/**
- * Constructor
- */
-YaraRule::YaraRule()
-{
-
-}
-
-/**
- * Destructor
- */
-YaraRule::~YaraRule()
-{
-
-}
 
 /**
  * Get name related to this rule
  * @return Name of rule
  */
-std::string YaraRule::getName() const
+const std::string &YaraRule::getName() const
 {
 	return name;
 }
@@ -39,7 +25,7 @@ std::string YaraRule::getName() const
  * @param id Name of selected meta
  * @return Pointer to selected meta or @c nullptr if such meta is not found
  */
-const YaraMeta* YaraRule::getMeta(std::string id) const
+const YaraMeta* YaraRule::getMeta(const std::string &id) const
 {
 	for(const auto &meta : metas)
 	{
@@ -59,7 +45,7 @@ const YaraMeta* YaraRule::getMeta(std::string id) const
  */
 const YaraMatch* YaraRule::getMatch(std::size_t index) const
 {
-	return index < matches.size() ? &matches[index] : nullptr;
+	return ((index < matches.size()) ? &matches[index] : nullptr);
 }
 
 /**
@@ -112,17 +98,9 @@ std::size_t YaraRule::getNumberOfMatches() const
  * @param id Name of selected meta
  * @return Pointer to selected meta or @c nullptr if such meta is not found
  */
-YaraMeta* YaraRule::getMeta(std::string id)
+YaraMeta* YaraRule::getMeta(const std::string &id)
 {
-	for(auto &meta : metas)
-	{
-		if(meta.getId() == id)
-		{
-			return &meta;
-		}
-	}
-
-	return nullptr;
+	return const_cast<YaraMeta*>(static_cast<const YaraRule*>(this)->getMeta(id));
 }
 
 /**
@@ -132,7 +110,7 @@ YaraMeta* YaraRule::getMeta(std::string id)
  */
 YaraMatch* YaraRule::getMatch(std::size_t index)
 {
-	return index < matches.size() ? &matches[index] : nullptr;
+	return ((index < matches.size()) ? &matches[index] : nullptr);
 }
 
 /**
@@ -141,14 +119,14 @@ YaraMatch* YaraRule::getMatch(std::size_t index)
  */
 YaraMatch* YaraRule::getFirstMatch()
 {
-	return getMatch(0);
+	return const_cast<YaraMatch*>(static_cast<const YaraRule*>(this)->getFirstMatch());
 }
 
 /**
  * Set name of rule
  * @param ruleName Name of rule
  */
-void YaraRule::setName(std::string ruleName)
+void YaraRule::setName(const std::string &ruleName)
 {
 	name = ruleName;
 }
@@ -169,6 +147,18 @@ void YaraRule::addMeta(const YaraMeta &meta)
 void YaraRule::addMatch(const YaraMatch &match)
 {
 	matches.push_back(match);
+}
+
+/**
+ * Overload to print rule's name
+ * @param o output stream
+ * @param rule rule being printed
+ * @return output stream for chaining operators
+ */
+std::ostream& operator<<(std::ostream& o, const YaraRule& rule)
+{
+	o << rule.name;
+	return o;
 }
 
 } // namespace yaracpp
