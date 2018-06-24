@@ -33,6 +33,7 @@ int main() {
 ## Requirements
 
 * A compiler supporting C++14
+  * GCC 4.9+
   * On Windows, only Microsoft Visual C++ is supported (version >= Visual Studio 2015).
 * CMake (version >= 3.6)
 
