@@ -157,7 +157,7 @@ bool YaraDetector::CallbackSettings::storeAllRules() const
  */
 int YaraDetector::yaraCallback(int message, void *messageData, void *userData)
 {
-	if(message == CALLBACK_MSG_IMPORT_MODULE)
+	if(message == CALLBACK_MSG_IMPORT_MODULE || message == CALLBACK_MSG_MODULE_IMPORTED)
 	{
 		return CALLBACK_CONTINUE;
 	}
