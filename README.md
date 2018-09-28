@@ -36,14 +36,14 @@ int main() {
   * GCC 4.9+
   * Visual Studio 2015+
 * CMake (version >= 3.6)
-* Linux and MinGW
+* On Linux, macOS, and MinGW:
   * Install these packages using your package manager: `autoconf automake libtool`
 
 ## Build and Installation
 
 * Clone the repository:
   * `git clone https://github.com/avast-tl/yaracpp.git`
-* Linux and MinGW:
+* Linux, macOS, and MinGW:
   * `cd yaracpp`
   * `mkdir build && cd build`
   * `cmake -DCMAKE_BUILD_TYPE=<Debug|Release> ..`
