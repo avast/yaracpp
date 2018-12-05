@@ -38,6 +38,7 @@ int main() {
 * CMake (version >= 3.6)
 * On Linux, macOS, and MinGW:
   * Install these packages using your package manager: `autoconf automake libtool`
+* On macOS also install [command-line tools](https://github.com/frida/frida/issues/338#issuecomment-426777849) (see [avast-tl/retdec#425](https://github.com/avast-tl/retdec/issues/425) and [avast-tl/retdec#433](https://github.com/avast-tl/retdec/issues/433))
 
 ## Build and Installation
 
