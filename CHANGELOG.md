@@ -2,7 +2,7 @@
 
 # dev
 
-* Updated YARA to version 3.7.1.
+* Updated YARA to version 3.8.1.
 * Fixed build of libyara under 32b Unix-like systems ([avast-tl/yara#1](https://github.com/avast-tl/yara/pull/1)).
 * Fixed cross-compilation ([#2](https://github.com/avast-tl/yaracpp/pull/2)).
 
