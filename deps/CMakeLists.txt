@@ -40,8 +40,8 @@ if(NOT TARGET yara)
 
 	ExternalProject_Add(yara
 		PREFIX "yara"
-		URL https://github.com/avast-tl/yara/archive/27e4cb8ae6528b7d14dc94bcd3ddf60b1355f18d.zip
-		URL_HASH SHA256=df21f84b92611bfa941e3e0cd39aca371a1540459b74c8733257a8bc543b3401
+		URL https://github.com/avast-tl/yara/archive/102811d0ec8751307a5e6996929e11fcfcee3b30.zip
+		URL_HASH SHA256=00e81a3c3ea1246ecadfa31397f1dbb83329bfbb4bab6eb5e3752eed50baac8d
 		DOWNLOAD_NAME yara.zip
 		BUILD_IN_SOURCE 1
 		CONFIGURE_COMMAND ""
