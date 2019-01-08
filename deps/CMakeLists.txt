@@ -54,9 +54,9 @@ if(NOT TARGET yara)
 	if(APPLE)
 		execute_process(
 			COMMAND xcrun --show-sdk-path
-			RESULT_VARIABLE MACOS_SDK_PATH
+			OUTPUT_VARIABLE MACOS_SDK_PATH
 		)
-		list(APPEND CMAKE_C_FLAGS "${MACOS_SDK_PATH}")
+		list(APPEND CMAKE_C_FLAGS "--sysroot=${MACOS_SDK_PATH}")
 	endif()
 
 	if(NOT MSVC)
