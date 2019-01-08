@@ -50,6 +50,15 @@ if(NOT TARGET yara)
 		INSTALL_COMMAND ""
 	)
 
+	# https://github.com/avast-tl/retdec/issues/439
+	if(APPLE)
+		execute_process(
+			COMMAND xcrun --show-sdk-path
+			RESULT_VARIABLE MACOS_SDK_PATH
+		)
+		list(APPEND CMAKE_C_FLAGS "${MACOS_SDK_PATH}")
+	endif()
+
 	if(NOT MSVC)
 		ExternalProject_Add_Step(yara configure-linux
 			WORKING_DIRECTORY ${YARA_DIR}
@@ -62,6 +71,7 @@ if(NOT TARGET yara)
 				--disable-shared
 				--without-crypto
 				CC=${CMAKE_C_COMPILER}
+				CFLAGS=${CMAKE_C_FLAGS}
 		)
 	endif()
 
