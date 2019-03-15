@@ -254,8 +254,12 @@ bool YaraDetector::addRules(const char *string)
 /**
  * Add external file with text rules
  * @param pathToFile Path to rule file
+ * @param nameSpace Namespace to use for the given rule file. If the file is
+ *                  already compiled, this has no effect. If it is a text file,
+ *                  this allows to have multiple rules with the same ID across
+ *                  multiple rule files.
  */
-bool YaraDetector::addRuleFile(const std::string &pathToFile)
+bool YaraDetector::addRuleFile(const std::string &pathToFile, const std::string &nameSpace)
 {
 	// AT first, try to load the files as precompiled file
 	YR_RULES* rules = nullptr;
@@ -270,7 +274,8 @@ bool YaraDetector::addRuleFile(const std::string &pathToFile)
 		if (!file)
 			return false;
 
-		if (yr_compiler_add_file(compiler, file, nullptr, nullptr) != 0)
+		const char* ns = nameSpace.empty() ? nullptr : nameSpace.c_str();
+		if (yr_compiler_add_file(compiler, file, ns, nullptr) != 0)
 		{
 			fclose(file);
 			return false;

@@ -82,7 +82,7 @@ class YaraDetector
 		/// @name Other methods
 		/// @{
 		bool addRules(const char *string);
-		bool addRuleFile(const std::string &pathToFile);
+		bool addRuleFile(const std::string &pathToFile, const std::string &nameSpace = std::string());
 		bool isInValidState() const;
 		/// @}
 
