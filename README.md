@@ -1,7 +1,7 @@
 # YARA C++ Wrapper
 
-[![Travis CI build status](https://travis-ci.org/avast-tl/yaracpp.svg?branch=master)](https://travis-ci.org/avast-tl/yaracpp)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/avast-tl/yaracpp?branch=master&svg=true)](https://ci.appveyor.com/project/avast-tl/yaracpp?branch=master)
+[![Travis CI build status](https://travis-ci.org/avast/yaracpp.svg?branch=master)](https://travis-ci.org/avast/yaracpp)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/avast/yaracpp?branch=master&svg=true)](https://ci.appveyor.com/project/avast/yaracpp?branch=master)
 
 C++ wrapper for [YARA](https://github.com/VirusTotal/yara).
 
@@ -38,19 +38,19 @@ int main() {
 * CMake (version >= 3.6)
 * On Linux, macOS, and MinGW:
   * Install these packages using your package manager: `autoconf automake libtool`
-* On macOS also install [command-line tools](https://github.com/frida/frida/issues/338#issuecomment-426777849) (see [avast-tl/retdec#425](https://github.com/avast-tl/retdec/issues/425) and [avast-tl/retdec#433](https://github.com/avast-tl/retdec/issues/433))
+* On macOS also install [command-line tools](https://github.com/frida/frida/issues/338#issuecomment-426777849) (see [avast/retdec#425](https://github.com/avast/retdec/issues/425) and [avast/retdec#433](https://github.com/avast/retdec/issues/433))
 
 ## Build and Installation
 
 * Clone the repository:
-  * `git clone https://github.com/avast-tl/yaracpp.git`
+  * `git clone https://github.com/avast/yaracpp.git`
 * Linux, macOS, and MinGW:
   * `cd yaracpp`
   * `mkdir build && cd build`
   * `cmake -DCMAKE_BUILD_TYPE=<Debug|Release> ..`
   * `make -jN` (`N` is the number of CPU cores to use for parallel build)
 * Windows:
-  * Open a command prompt (e.g. `C:\msys64\msys2_shell.cmd` from [MSYS2](https://github.com/avast-tl/retdec/wiki/Windows-Environment))
+  * Open a command prompt (e.g. `C:\msys64\msys2_shell.cmd` from [MSYS2](https://github.com/avast/retdec/wiki/Windows-Environment))
   * `cd yaracpp`
   * `mkdir build && cd build`
   * `cmake -G<generator> ..`
@@ -66,4 +66,4 @@ Copyright (c) 2017 Avast Software, licensed under the MIT license. See the `LICE
 
 ## Contributing
 
-See [RetDec contribution guidelines](https://github.com/avast-tl/retdec/wiki/Contribution-Guidelines).
+See [RetDec contribution guidelines](https://github.com/avast/retdec/wiki/Contribution-Guidelines).
