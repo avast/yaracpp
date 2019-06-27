@@ -5,7 +5,7 @@
 
 C++ wrapper for [YARA](https://github.com/VirusTotal/yara).
 
-## Usage Example
+## Usage Examples
 
 ```cpp
 #include <iostream>
@@ -29,8 +29,6 @@ int main() {
     }
 }
 ```
-
-## Fetching meta data:
 
 ```cpp
 #include <iostream>
