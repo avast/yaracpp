@@ -5,7 +5,7 @@
 
 C++ wrapper for [YARA](https://github.com/VirusTotal/yara).
 
-## Usage Example
+## Usage Examples
 
 ```cpp
 #include <iostream>
@@ -28,6 +28,62 @@ int main() {
         }
     }
 }
+```
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <yaracpp/yaracpp.h>
+
+int main()
+{
+	yaracpp::YaraDetector yara;
+
+	// ADD A SAMPLE RULE FILES
+	yara.addRuleFile("signatures/bot.yar");
+	yara.addRuleFile("signatures/main.yar");
+
+	if (yara.analyze("test.bin"))
+	{
+		std::vector<yaracpp::YaraRule> matched_rules = yara.getDetectedRules();
+		std::cout << "Total Rules Matched: " << matched_rules.size() << "\n";
+
+		std::vector<yaracpp::YaraRule> unmatched_rules = yara.getUndetectedRules();
+		std::cout << "Total Rules Un-matched: " << unmatched_rules.size() << "\n\n";
+
+		for (yaracpp::YaraRule rule : matched_rules)
+		{
+			std::cout << "Matched Rule Name: " << rule.getName() << "\n";
+			std::cout << "Meta Information Count: " << rule.getNumberOfMetas() << "\n";
+
+			// PRINT THE META INFORMATIONS
+			std::cout << "META INFOMATIONS:\n";
+			std::vector<yaracpp::YaraMeta> meta_informations = rule.getMetas();
+			for (yaracpp::YaraMeta meta : meta_informations)
+			{
+				std::cout << meta.getId() << " : " << meta.getStringValue() << "\n";
+			}
+			std::cout << "\n";
+		}
+	}
+}
+```
+
+### Output:
+```
+Total Rules Matched: 2
+Total Rules Un-matched: 0
+
+Matched Rule Name: bot
+Meta Information Count: 2
+META INFOMATIONS:
+author : Visweswaran
+description : BOT
+
+Matched Rule Name: example
+Meta Information Count: 1
+META INFOMATIONS:
+description : EXAMPLE - 1
 ```
 
 ## Requirements
